@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PhotoService } from '../services/photo.service';
+import { Capacitor } from '@capacitor/core';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -8,6 +10,11 @@ import { PhotoService } from '../services/photo.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  environment = environment;
+
+  get type() {
+    return Capacitor.getPlatform();
+  }
 
   constructor(public photoService: PhotoService) { }
 
