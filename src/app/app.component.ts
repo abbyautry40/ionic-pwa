@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
-import { filter, interval, map } from 'rxjs';
+import { Observable, filter, fromEvent, interval, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AppConfig } from '@capacitor-community/mdm-appconfig';
 import { ModalController, Platform } from '@ionic/angular';
@@ -33,6 +33,7 @@ export class AppComponent {
     }
 
     this.initializeApp();
+    this.listenForInternetConnection();
   }
 
   async initializeAppConfigs() {
@@ -54,4 +55,33 @@ export class AppComponent {
       await this.initializeAppConfigs();
     });
   }
+
+  listenForInternetConnection(): void {
+		console.log('listening for internet...');
+
+		const online$: Observable<Event> = fromEvent(window, "online");
+		const offline$: Observable<Event> = fromEvent(window, "offline");
+
+    online$.subscribe((x) => {
+      console.log('online$ :>> ', x);
+    })
+
+    offline$.subscribe((x) => {
+      console.log('offline$ :>> ', x);
+    })
+
+		// StorageService.addSubscription(
+		// 	online$.subscribe(() => {
+		// 		console.log("BaseService.listenForInternetConnection: Online");
+		// 	})
+		// );
+		// StorageService.addSubscription(
+		// 	offline$.subscribe(() => {
+		// 		console.log(
+		// 			"BaseService.listenForInternetConnection: Offline - Lost internet connection"
+		// 		);
+		// 	})
+		// );
+	}
+
 }
