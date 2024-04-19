@@ -7,6 +7,13 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
+    path: 'barcode-scanning',
+    loadChildren: () =>
+      import("./barcode-scanning/barcode-scanning.module").then(
+        (m) => m.BarcodeScanningModule,
+      ),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'

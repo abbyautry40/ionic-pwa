@@ -10,9 +10,14 @@
 
   <ion-button (click)="openBrowser()">Browser</ion-button>
 
-  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button (click)="addPhotoToGallery()">
-      <ion-icon name="camera"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Plugins</ion-label>
+    </ion-list-header>
+    @for (plugin of plugins; track plugin) {
+    <ion-item button [routerLink]="[plugin.url]">
+      <ion-label>{{ plugin.name }}</ion-label>
+    </ion-item>
+    }
+  </ion-list>
 </ion-content>

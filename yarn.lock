@@ -1331,6 +1331,11 @@
   resolved "https://registry.yarnpkg.com/@capacitor-community/mdm-appconfig/-/mdm-appconfig-5.0.1.tgz#3896cb68556e5857fba413f2811c144864e5d063"
   integrity sha512-BrPMWiJZI/VKy/nfYu67SLe648DkBKBP4E63uuE38nXE1s7teGwOIAtlRfAoVFVTc80NU749wisgo25PKI7YkQ==
 
+"@capacitor-mlkit/barcode-scanning@^5.3.0":
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/@capacitor-mlkit/barcode-scanning/-/barcode-scanning-5.4.0.tgz#cb64b7f421e442d2114bf8b57bd440b2b874315e"
+  integrity sha512-6vmnUm66suMbYnLKlUlBrEX5/xOQYg4laPTGvOL7gmfzcdxvSJA++oHY9L4m3RpDQk3FzmQELSpbIHzvcVYPuw==
+
 "@capacitor/android@6.0.0":
   version "6.0.0"
   resolved "https://registry.npmjs.org/@capacitor/android/-/android-6.0.0.tgz"

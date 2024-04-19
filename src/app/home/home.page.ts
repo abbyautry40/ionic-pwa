@@ -12,6 +12,13 @@ import { Browser } from '@capacitor/browser';
 export class HomePage implements OnInit {
   environment = environment;
 
+  public plugins = [
+    {
+      name: 'Barcode Scanning',
+      url: '/barcode-scanning',
+    }
+  ];
+
   get type() {
     return Capacitor.getPlatform();
   }
