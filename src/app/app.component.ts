@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { filter, interval, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { AppConfig } from '@capacitor-community/mdm-appconfig';
+import { ModalController, Platform } from '@ionic/angular';
+
+export const MDM_BASE_URL_KEY = "baseUrl";
 
 @Component({
   selector: 'app-root',
@@ -9,9 +13,13 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  isWeb = false;
 
-
-  constructor(private swUpdate: SwUpdate) {
+  constructor(
+    private swUpdate: SwUpdate,
+    private platform: Platform,
+    public modalCtrl: ModalController,
+  ) {
     if (this.swUpdate.isEnabled && environment.production) {
       this.swUpdate.versionUpdates.subscribe((evt) => {
         switch (evt.type) {
@@ -24,22 +32,26 @@ export class AppComponent {
       });
     }
 
-    // if (updates.isEnabled) {
-    //   interval(6 * 60 * 60).subscribe(() => updates.checkForUpdate()
-    //     .then(() => console.log('checking for updates')));
-    // }
+    this.initializeApp();
   }
 
-  // public checkForUpdates(): void {
-  //   this.updates.versionUpdates.subscribe(() => this.promptUser());
-  // }
+  async initializeAppConfigs() {
+    try {
+      const result = await AppConfig.getValue({
+        key: MDM_BASE_URL_KEY,
+      });
+      console.log('result :>> ', result);
+    } catch (e) {
+      console.warn(e);
+    }
+  }
 
-  // private promptUser(): void {
-  //   console.log('updating to new version');
+  async initializeApp() {
+    this.platform.ready().then(async () => {
+      this.isWeb = !this.platform.is('ios') && !this.platform.is('android');
 
-  //   this.updates.activateUpdate().then(() => {
-  //     alert('here!');
-  //     document.location.reload();
-  //   });
-  // }
+      // for mobile, we need to get the app config from the MDM
+      await this.initializeAppConfigs();
+    });
+  }
 }

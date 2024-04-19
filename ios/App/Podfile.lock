@@ -5,6 +5,8 @@ PODS:
     - Capacitor
   - CapacitorCamera (6.0.0):
     - Capacitor
+  - CapacitorCommunityMdmAppconfig (5.0.1):
+    - Capacitor
   - CapacitorCordova (6.0.0)
   - CapacitorFilesystem (6.0.0):
     - Capacitor
@@ -21,6 +23,7 @@ DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorApp (from `../../node_modules/@capacitor/app`)"
   - "CapacitorCamera (from `../../node_modules/@capacitor/camera`)"
+  - "CapacitorCommunityMdmAppconfig (from `../../node_modules/@capacitor-community/mdm-appconfig`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorFilesystem (from `../../node_modules/@capacitor/filesystem`)"
   - "CapacitorHaptics (from `../../node_modules/@capacitor/haptics`)"
@@ -35,6 +38,8 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/app"
   CapacitorCamera:
     :path: "../../node_modules/@capacitor/camera"
+  CapacitorCommunityMdmAppconfig:
+    :path: "../../node_modules/@capacitor-community/mdm-appconfig"
   CapacitorCordova:
     :path: "../../node_modules/@capacitor/ios"
   CapacitorFilesystem:
@@ -52,6 +57,7 @@ SPEC CHECKSUMS:
   Capacitor: 559d073c4ca6c27f8e7002c807eea94c3ba435a9
   CapacitorApp: 9d53aec7101f7b030a950c5bdc4df8612576b279
   CapacitorCamera: b61f125d92a0ef75d7becb7956fed7dd13187ee0
+  CapacitorCommunityMdmAppconfig: 3ed688bfc0c6914f888b2f0894ec2c2007c8d17b
   CapacitorCordova: 8c4bfdf69368512e85b1d8b724dd7546abeb30af
   CapacitorFilesystem: 60e59ba274c234a979e7a3be2552feaadcee4263
   CapacitorHaptics: 9ebc9363f0e9b8eb4295088a0b474530acf1859b
@@ -59,6 +65,6 @@ SPEC CHECKSUMS:
   CapacitorPreferences: c9b839a80baa72e4ed4bdb117618e1950d3046b5
   CapacitorStatusBar: 2e4369f99166125435641b1908d05f561eaba6f6
 
-PODFILE CHECKSUM: 645c6f0ebd6fe237b8c3df63febaa44115e4826d
+PODFILE CHECKSUM: 99972e37b163131f352d66b2a82469e6c1c5d9fa
 
 COCOAPODS: 1.11.3
