@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PhotoService } from '../services/photo.service';
 import { Capacitor } from '@capacitor/core';
 import { environment } from 'src/environments/environment';
-
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +24,10 @@ export class HomePage implements OnInit {
 
   addPhotoToGallery() {
     this.photoService.addNewToGallery();
+  }
+
+  async openBrowser() {
+    await Browser.open({ url: 'http://capacitorjs.com/' });
   }
 
 }

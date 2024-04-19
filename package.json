@@ -26,6 +26,7 @@
     "@capacitor-community/mdm-appconfig": "^5.0.1",
     "@capacitor/android": "6.0.0",
     "@capacitor/app": "6.0.0",
+    "@capacitor/browser": "^6.0.0",
     "@capacitor/camera": "^6.0.0",
     "@capacitor/core": "6.0.0",
     "@capacitor/filesystem": "^6.0.0",

@@ -8,16 +8,7 @@
   <h1>type: {{ type }}, prod: {{ environment.production }}</h1>
   abby
 
-  <ion-grid>
-    <ion-row>
-      <ion-col
-        size="6"
-        *ngFor="let photo of photoService.photos; index as position"
-      >
-        <ion-img [src]="photo.webviewPath"></ion-img>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-button (click)="openBrowser()">Browser</ion-button>
 
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
     <ion-fab-button (click)="addPhotoToGallery()">
