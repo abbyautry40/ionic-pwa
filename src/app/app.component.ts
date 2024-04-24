@@ -20,20 +20,29 @@ export class AppComponent {
     private platform: Platform,
     public modalCtrl: ModalController,
   ) {
-    if (this.swUpdate.isEnabled && environment.production) {
-      this.swUpdate.versionUpdates.subscribe((evt) => {
-        switch (evt.type) {
-          case 'VERSION_READY':
-            this.swUpdate.activateUpdate().then(() => {
-              document.location.reload();
-            });
-            break;
-        }
-      });
-    }
-
     this.initializeApp();
     this.listenForInternetConnection();
+    this.checkForUpdates();
+  }
+
+
+  async checkForUpdates() {
+    console.log('checking environment...');
+    if (this.swUpdate.isEnabled && !environment.production) {
+      return;
+    }
+
+    try {
+      const newVersion = await this.swUpdate.checkForUpdate();
+
+      if (newVersion) {
+        console.log('activating update...');
+        await this.swUpdate.activateUpdate();
+        document.location.reload();
+      }
+    } catch(error) {
+      console.log('error :>> ', error);
+    }
   }
 
   async initializeAppConfigs() {
